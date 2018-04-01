@@ -1,11 +1,30 @@
+# -*- coding: utf-8 -*-
+
+"""Setup.
+
+API setup file.
+
+"""
+
 import os
-from setuptools import setup
-from pip.req import parse_requirements
 from pip.download import PipSession
+from pip.req import parse_requirements
+from setuptools import setup
 
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+def read_file(file_name):
+    """Read the file.
+
+    Reads the contents of the file.
+
+    Args:
+        file_name (string): Name of the file.
+
+    Returns:
+        string: Content of the file.
+
+    """
+    return open(os.path.join(os.path.dirname(__file__), file_name)).read()
 
 
 install_reqs = parse_requirements("./requirements.txt", session=PipSession())
@@ -20,7 +39,7 @@ setup(
     description=("Api to format strings"),
     keywords="String Limit Caracter",
     packages=['strings_api'],
-    long_description=read('README.md'),
+    long_description=read_file('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Framework :: Hug"
